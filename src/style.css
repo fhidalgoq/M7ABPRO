@@ -1,0 +1,218 @@
+/* Estilos globales para EduPlatform */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+}
+
+/* Animaciones globales */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Efectos de hover personalizados */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradientes personalizados */
+.gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.gradient-warm {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-cool {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Sombras personalizadas */
+.shadow-soft {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-medium {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.shadow-strong {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+}
+
+/* Bordes redondeados personalizados */
+.rounded-xl {
+  border-radius: 16px !important;
+}
+
+.rounded-2xl {
+  border-radius: 20px !important;
+}
+
+/* Texto con gradiente */
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Efectos de glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Animaciones de carga */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Mejoras para Vuetify */
+.v-application {
+  font-family: 'Roboto', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif !important;
+}
+
+.v-card {
+  transition: all 0.3s ease;
+}
+
+.v-btn {
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+/* Efectos de focus mejorados */
+.v-btn:focus-visible,
+.v-text-field:focus-within {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+/* Mejoras para las tablas */
+.v-data-table {
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.v-data-table__wrapper {
+  border-radius: 12px;
+}
+
+/* Mejoras para los diálogos */
+.v-dialog > .v-overlay__content {
+  border-radius: 16px !important;
+}
+
+/* Mejoras para los formularios */
+.v-text-field .v-field {
+  border-radius: 12px !important;
+}
+
+.v-textarea .v-field {
+  border-radius: 12px !important;
+}
+
+/* Efectos de transición para las páginas */
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: all 0.3s ease;
+}
+
+.page-transition-enter-from {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
