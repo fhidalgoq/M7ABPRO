@@ -1,0 +1,28 @@
+{
+  "name": "abpro2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "vite preview --port 4173",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "e2e": "npm run cypress:run"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "axios": "^1.12.2",
+    "firebase": "^12.3.0",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1",
+    "vuetify": "^3.10.5",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.7"
+  }
+}
