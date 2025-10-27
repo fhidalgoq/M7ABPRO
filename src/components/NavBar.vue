@@ -5,7 +5,7 @@
       <div class="d-flex align-center">
         <v-icon size="32" color="white" class="mr-3">mdi-school</v-icon>
         <v-app-bar-title class="text-h5 font-weight-bold text-white">
-          EduPlatform
+          AdWeb Online
         </v-app-bar-title>
         <v-chip v-if="isAuth" color="white" variant="flat" size="small" class="ml-4">
           <v-icon start>mdi-account</v-icon>

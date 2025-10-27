@@ -6,7 +6,7 @@
         <v-col cols="12" md="6" class="pa-8 pa-md-12">
           <div class="hero-content">
             <h1 class="text-h3 text-md-h2 font-weight-bold mb-4 text-primary">
-              Bienvenido a EduPlatform
+              Bienvenido a AdWeb Online
             </h1>
             <p class="text-h6 text-medium-emphasis mb-6">
               Descubre una amplia variedad de cursos online diseñados para impulsar tu carrera profesional

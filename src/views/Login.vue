@@ -98,9 +98,11 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 
 const authStore = useAuthStore()
+const router = useRouter()
 const email = ref('')
 const password = ref('')
 const error = computed(() => authStore.error)
@@ -118,11 +120,15 @@ const passwordRules = [
 ]
 
 const login = async () => {
-  if (email.value && password.value) {
-    await authStore.login({ 
-      email: email.value, 
-      password: password.value 
-    })
+  if (!email.value || !password.value) return
+
+  await authStore.login({ 
+    email: email.value, 
+    password: password.value 
+  })
+
+  if (!authStore.error && authStore.isAuth) {
+    router.push('/home')
   }
 }
 
