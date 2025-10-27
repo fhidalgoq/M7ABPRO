@@ -68,14 +68,14 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useStore } from 'vuex'
+import { useAuthStore } from '../stores/auth'
 import { useRouter } from 'vue-router'
 
-const store = useStore()
+const authStore = useAuthStore()
 const router = useRouter()
 
-const isAuth = computed(() => store.getters['auth/isAuth'])
-const email = computed(() => store.getters['auth/userEmail'])
+const isAuth = computed(() => authStore.isAuth)
+const email = computed(() => authStore.userEmail)
 
 const userDisplayName = computed(() => {
   const emailValue = email.value
@@ -83,7 +83,7 @@ const userDisplayName = computed(() => {
 })
 
 const logout = async () => {
-  await store.dispatch('auth/logout')
+  await authStore.logout()
   router.push('/login')
 }
 </script>

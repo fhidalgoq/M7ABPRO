@@ -208,14 +208,14 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { useStore } from 'vuex'
+import { useCoursesStore } from '../stores/courses'
 import CourseForm from '../components/CourseForm.vue'
 
-const store = useStore()
-const courses = computed(() => store.getters['courses/list'])
-const loading = computed(() => store.state.courses.loading)
-const successMessage = computed(() => store.state.courses.successMessage)
-const errorMessage = computed(() => store.state.courses.error)
+const coursesStore = useCoursesStore()
+const courses = computed(() => coursesStore.list)
+const loading = computed(() => coursesStore.loading)
+const successMessage = computed(() => coursesStore.successMessage)
+const errorMessage = computed(() => coursesStore.error)
 
 // Dialog control
 const showNew = ref(false)
@@ -252,7 +252,7 @@ const totalRevenue = computed(() =>
   courses.value.reduce((sum, c) => sum + ((c.inscritos || 0) * (parseInt(c.precio) || 0)), 0)
 )
 
-onMounted(() => store.dispatch('courses/subscribe'))
+onMounted(() => coursesStore.subscribe())
 
 // Watchers para mostrar notificaciones
 watch(successMessage, (newValue) => {
@@ -260,7 +260,7 @@ watch(successMessage, (newValue) => {
     showSuccessSnackbar.value = true
     // Limpiar mensaje después de mostrar
     setTimeout(() => {
-      store.commit('courses/CLEAR_MESSAGES')
+      coursesStore.clearMessages()
     }, 3000)
   }
 })
@@ -270,7 +270,7 @@ watch(errorMessage, (newValue) => {
     showErrorSnackbar.value = true
     // Limpiar mensaje después de mostrar
     setTimeout(() => {
-      store.commit('courses/CLEAR_MESSAGES')
+      coursesStore.clearMessages()
     }, 5000)
   }
 })
@@ -283,7 +283,7 @@ const create = (payload) => {
 
 const performAdd = async () => {
   if (!pendingNew.value) return
-  await store.dispatch('courses/add', pendingNew.value)
+  await coursesStore.add(pendingNew.value)
   // close both confirmation and the new-course form dialog
   showConfirmAdd.value = false
   showNew.value = false
@@ -297,7 +297,7 @@ const confirmDelete = (course) => {
 
 const remove = async () => {
   if (!toDelete.value) return
-  await store.dispatch('courses/remove', toDelete.value.id)
+  await coursesStore.remove(toDelete.value.id)
   showConfirm.value = false
   toDelete.value = null
 }

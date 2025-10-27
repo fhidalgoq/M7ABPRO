@@ -109,15 +109,15 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { useStore } from 'vuex'
+import { useAuthStore } from '../stores/auth'
 
-const store = useStore()
+const authStore = useAuthStore()
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
-const error = computed(() => store.state.auth.error)
-const successMessage = computed(() => store.state.auth.successMessage)
-const loading = computed(() => store.state.auth.loading)
+const error = computed(() => authStore.error)
+const successMessage = computed(() => authStore.successMessage)
+const loading = computed(() => authStore.loading)
 
 const emailRules = [
   v => !!v || 'El correo es requerido',
@@ -136,7 +136,7 @@ const confirmPasswordRules = [
 
 const register = async () => {
   if (email.value && password.value && confirmPassword.value) {
-    await store.dispatch('auth/register', { 
+    await authStore.register({ 
       email: email.value, 
       password: password.value 
     })
@@ -144,11 +144,11 @@ const register = async () => {
 }
 
 const clearError = () => {
-  store.commit('auth/SET_ERROR', null)
+  authStore.clearMessages()
 }
 
 const clearSuccess = () => {
-  store.commit('auth/SET_SUCCESS_MESSAGE', null)
+  authStore.clearMessages()
 }
 </script>
 

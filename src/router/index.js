@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Home from '../views/Home.vue'
 import Admin from '../views/Admin.vue'
 import EditCourse from '../views/EditCourse.vue'
-import store from '../store'
 
 
 const routes = [
@@ -28,15 +28,17 @@ const router = createRouter({ history: createWebHistory(), routes })
 
 
 router.beforeEach(async (to, from, next) => {
-if (!store.state.auth.initialized) {
-await store.dispatch('auth/initAuth')
-}
-const isAuth = store.getters['auth/isAuth']
+  const authStore = useAuthStore()
+  
+  if (!authStore.initialized) {
+    await authStore.initAuth()
+  }
+  
+  const isAuth = authStore.isAuth
 
-
-if (to.meta.requiresAuth && !isAuth) return next('/login')
-if (to.meta.public && isAuth) return next('/home')
-return next()
+  if (to.meta.requiresAuth && !isAuth) return next('/login')
+  if (to.meta.public && isAuth) return next('/home')
+  return next()
 })
 
 

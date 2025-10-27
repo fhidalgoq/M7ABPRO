@@ -40,15 +40,15 @@
     <script setup>
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+import { useCoursesStore } from '../stores/courses'
 import CourseForm from '../components/CourseForm.vue'
 
 const router = useRouter()
 const route = useRoute()
-const store = useStore()
+const coursesStore = useCoursesStore()
 const open = ref(true)
 
-const course = computed(() => store.getters['courses/byId'](route.params.id))
+const course = computed(() => coursesStore.byId(route.params.id))
 
 const breadcrumbs = computed(() => [
   {
@@ -73,7 +73,7 @@ const breadcrumbs = computed(() => [
 const goBack = () => router.push('/admin')
 
 const update = async (payload) => {
-  await store.dispatch('courses/update', { id: route.params.id, data: payload })
+  await coursesStore.update({ id: route.params.id, data: payload })
   router.push('/admin')
 }
 </script>

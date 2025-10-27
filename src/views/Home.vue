@@ -164,13 +164,13 @@
 
 <script setup>
 import { onMounted, computed, ref } from 'vue'
-import { useStore } from 'vuex'
+import { useCoursesStore } from '../stores/courses'
 import { useRouter } from 'vue-router'
 import CourseCard from '../components/CourseCard.vue'
 
-const store = useStore()
+const coursesStore = useCoursesStore()
 const router = useRouter()
-const courses = computed(() => store.getters['courses/list'])
+const courses = computed(() => coursesStore.list)
 
 // Filtros y búsqueda
 const searchQuery = ref('')
@@ -239,10 +239,10 @@ const stats = ref([
 ])
 
 onMounted(() => {
-  store.dispatch('courses/subscribe')
+  coursesStore.subscribe()
 })
 
-const seed = () => store.dispatch('courses/seedIfEmpty')
+const seed = () => coursesStore.seedIfEmpty()
 
 const scrollToCourses = () => {
   document.getElementById('courses-section')?.scrollIntoView({ 
