@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-page">
+  <div class="admin-page pt-16">
     <v-container class="py-8">
       <!-- Header -->
       <div class="admin-header mb-8">
