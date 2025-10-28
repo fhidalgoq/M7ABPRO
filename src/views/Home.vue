@@ -1,11 +1,11 @@
 <template>
   <div class="home-page">
     <!-- Hero Section -->
-    <v-container fluid class="hero-section pa-0">
-      <v-row no-gutters class="align-center" style="min-height: 400px;">
+    <v-container fluid class="hero-section pt-16">
+      <v-row no-gutters class="align-center hero-row" style="min-height: 400px;">
         <v-col cols="12" md="6" class="pa-8 pa-md-12">
           <div class="hero-content">
-            <h1 class="text-h3 text-md-h2 font-weight-bold mb-4 text-primary">
+            <h1 class="text-h3 text-md-h2 font-weight-bold mb-4 text-white">
               Bienvenido a AdWeb Online
             </h1>
             <p class="text-h6 text-medium-emphasis mb-6">
@@ -266,11 +266,28 @@ const clearFilters = () => {
 .home-page {
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page > * {
+  width: 100%;
 }
 
 .hero-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  display: flex;
+  justify-content: center;
+  padding: 64px 0;
+}
+
+.hero-row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .hero-content {
