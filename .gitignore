@@ -14,7 +14,9 @@ dist-ssr
 .env
 *.pdf
 # Editor directories and files
-.vscode/*
+.vscode
+.github
+.firebase
 !.vscode/extensions.json
 .idea
 .DS_Store
